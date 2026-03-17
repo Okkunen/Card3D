@@ -7,23 +7,108 @@ anchors_preset = 0
 offset_right = 500.0
 offset_bottom = 700.0
 
+[node name="FrontColorFill" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.14902, 0.168627, 1)
+
 [node name="FrontTextureBackground" type="TextureRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+modulate = Color(1, 1, 1, 0.15)
+
+[node name="AccentBand" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+color = Color(0.858824, 0.494118, 0.184314, 1)
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 34.0
+offset_right = 128.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(1, 0.980392, 0.886275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 46
+text = "0"
+
+[node name="OwnerLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 290.0
+offset_top = 34.0
+offset_right = -26.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.92549, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 108.0
+offset_right = 472.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(1, 0.980392, 0.886275, 1)
+theme_override_font_sizes/font_size = 34
+autowrap_mode = 3
+
+[node name="TypeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 178.0
+offset_right = 470.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(0.792157, 0.831373, 0.913725, 1)
+theme_override_font_sizes/font_size = 20
 
 [node name="FrontArtGuide" type="ReferenceRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 30.0
-offset_top = 30.0
+offset_top = 234.0
 offset_right = -30.0
-offset_bottom = -10.0
-border_color = Color(0.2, 0.8, 0.5, 0.8)
+offset_bottom = 22.0
+border_color = Color(0.2, 0.8, 0.5, 0.35)
 border_width = 2.0
+
+[node name="BodyLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -102.0
+offset_right = -34.0
+offset_bottom = -132.0
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.952941, 1)
+theme_override_font_sizes/font_size = 28
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FooterLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 30.0
+offset_top = 600.0
+offset_right = -30.0
+offset_bottom = 666.0
+theme_override_colors/font_color = Color(0.803922, 0.843137, 0.905882, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="FrontTextGuide" type="ReferenceRect" parent="."]
 layout_mode = 0
@@ -31,13 +116,14 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0
-offset_top = 20.0
+offset_top = -116.0
 offset_right = -30.0
-offset_bottom = -30.0
-border_color = Color(0.95, 0.7, 0.2, 0.8)
+offset_bottom = -120.0
+border_color = Color(0.95, 0.7, 0.2, 0.35)
 border_width = 2.0
 
 [node name="FrontTextureLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0

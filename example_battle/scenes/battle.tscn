@@ -1,67 +1,173 @@
-[gd_scene load_steps=11 format=3 uid="uid://fdx3muhixky4"]
+[gd_scene format=3 uid="uid://fdx3muhixky4"]
 
-[ext_resource type="Script" uid="uid://bwet1jv3qfdxg" path="res://example_battle/scenes/battle.gd" id="1_wmhlq"]
-[ext_resource type="PackedScene" uid="uid://d1uvcisduvvj" path="res://addons/card_3d/scenes/card_collection_3d.tscn" id="2_6x4v1"]
-[ext_resource type="Script" uid="uid://bgkontnk0cnl" path="res://addons/card_3d/scripts/drag_controller.gd" id="2_qm7by"]
-[ext_resource type="Script" uid="uid://7sguf1kjbe8s" path="res://addons/card_3d/scripts/card_layouts/fan_card_layout.gd" id="3_0udwp"]
-[ext_resource type="Script" uid="uid://blba82h7r8vut" path="res://example_battle/scripts/play_card_dropzone.gd" id="4_d6qeg"]
-[ext_resource type="PackedScene" uid="uid://4dl436anjvr6" path="res://example_battle/scenes/battle_card_3d.tscn" id="6_lretv"]
+[ext_resource type="Script" uid="uid://bwet1jv3qfdxg" path="res://example_battle/scenes/battle.gd" id="1_battle"]
+[ext_resource type="Script" uid="uid://e8opw8d43g27" path="res://example_battle/scripts/battle_manager.gd" id="2_manager"]
+[ext_resource type="Script" uid="uid://bgkontnk0cnl" path="res://addons/card_3d/scripts/drag_controller.gd" id="3_drag"]
+[ext_resource type="PackedScene" path="res://example_battle/scenes/battle_collection_3d.tscn" id="4_collection"]
+[ext_resource type="Script" uid="uid://7sguf1kjbe8s" path="res://addons/card_3d/scripts/card_layouts/fan_card_layout.gd" id="5_fan"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jjfpl"]
-size = Vector2(50, 50)
+[sub_resource type="PlaneMesh" id="PlaneMesh_table"]
+size = Vector2(34, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1erc"]
-albedo_color = Color(0.207843, 0.396078, 0.301961, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
+albedo_color = Color(0.176471, 0.282353, 0.227451, 1)
+roughness = 0.94
 
-[sub_resource type="Resource" id="Resource_q3f0o"]
-resource_name = "PlayZoneDragStrategy"
-script = ExtResource("4_d6qeg")
-play_enabled = true
-can_select = true
-can_remove = false
-can_reorder = false
-can_insert = true
-metadata/_custom_type_script = "uid://blba82h7r8vut"
+[sub_resource type="Resource" id="Resource_warrior_hand_layout"]
+script = ExtResource("5_fan")
+arc_angle_deg = 76.0
+arc_radius = 9.0
 
-[sub_resource type="Resource" id="Resource_eexvo"]
-script = ExtResource("3_0udwp")
-direction = 0
-arc_angle_deg = 90.0
-arc_radius = 7.0
+[sub_resource type="Resource" id="Resource_mage_hand_layout"]
+script = ExtResource("5_fan")
+arc_angle_deg = 76.0
+arc_radius = 9.0
 
-[node name="Battle" type="Node3D"]
-script = ExtResource("1_wmhlq")
+[node name="Battle" type="Node3D" unique_id=381268718]
+script = ExtResource("1_battle")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.2273)
+[node name="BattleManager" type="Node" parent="." unique_id=272258684]
+script = ExtResource("2_manager")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855337539]
+transform = Transform3D(0.939693, -0.241845, -0.241845, 0, 0.707107, -0.707107, 0.34202, 0.664463, 0.664463, 0, 0, 12)
 shadow_enabled = true
-shadow_opacity = 0.75
-shadow_blur = 6.15
+shadow_opacity = 0.7
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.04531)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1566327696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74364436, 12.3815365)
 
-[node name="Table" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1.30608)
-mesh = SubResource("PlaneMesh_jjfpl")
-surface_material_override/0 = SubResource("StandardMaterial3D_s1erc")
+[node name="Table" type="MeshInstance3D" parent="." unique_id=138541260]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.7, 0)
+mesh = SubResource("PlaneMesh_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
-[node name="DragController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.97393)
-script = ExtResource("2_qm7by")
+[node name="UnitViews" type="Node3D" parent="." unique_id=30612386]
+
+[node name="HeroAnchors" type="Node3D" parent="." unique_id=707537686]
+
+[node name="WarriorAnchor" type="Marker3D" parent="HeroAnchors" unique_id=111269424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.4, 0.4)
+
+[node name="MageAnchor" type="Marker3D" parent="HeroAnchors" unique_id=660181678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.4, 0.4)
+
+[node name="EnemyAnchors" type="Node3D" parent="." unique_id=492799802]
+
+[node name="EnemyAnchor1" type="Marker3D" parent="EnemyAnchors" unique_id=1712539454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 3.2, 0.4)
+
+[node name="EnemyAnchor2" type="Marker3D" parent="EnemyAnchors" unique_id=1400580123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 3.2, 0.4)
+
+[node name="EnemyAnchor3" type="Marker3D" parent="EnemyAnchors" unique_id=1795442508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0.4)
+
+[node name="EnemyAnchor4" type="Marker3D" parent="EnemyAnchors" unique_id=1418279052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 3.2, 0.4)
+
+[node name="EnemyAnchor5" type="Marker3D" parent="EnemyAnchors" unique_id=429329796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 3.2, 0.4)
+
+[node name="DragController" type="Node3D" parent="." unique_id=970562474]
+script = ExtResource("3_drag")
 card_drag_plane = Plane(0, 0, 1, 4)
+card_drag_threshold = 8.0
 
-[node name="PlayZone" parent="DragController" instance=ExtResource("2_6x4v1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.309844)
-drag_strategy = SubResource("Resource_q3f0o")
+[node name="UnitTargets" type="Node3D" parent="DragController" unique_id=1627416565]
 
-[node name="CardCollection3D" parent="DragController" instance=ExtResource("2_6x4v1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.39072, 0)
-card_layout_strategy = SubResource("Resource_eexvo")
+[node name="GlobalPlayZone" parent="DragController" unique_id=428817683 instance=ExtResource("4_collection")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0.4)
+collection_role = "play_zone"
+owner_id = &""
+target_owner_id = ""
+battle_root_path = NodePath("")
 
-[node name="Monster" parent="." instance=ExtResource("6_lretv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699603, 2.60341)
-front_material_path = "res://example_battle/materials/ghost-card.tres"
-health = 7
+[node name="WarriorHand" parent="DragController" unique_id=1905210993 instance=ExtResource("4_collection")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -5.25, 0.4)
+collection_role = &"hand"
+owner_id = "warrior"
+target_owner_id = ""
+battle_root_path = NodePath("")
+card_layout_strategy = SubResource("Resource_warrior_hand_layout")
 
-[connection signal="card_added" from="DragController/PlayZone" to="." method="_on_play_zone_card_added"]
+[node name="MageHand" parent="DragController" unique_id=1701433670 instance=ExtResource("4_collection")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, -5.25, 0.4)
+collection_role = &"hand"
+owner_id = "mage"
+target_owner_id = ""
+battle_root_path = NodePath("")
+card_layout_strategy = SubResource("Resource_mage_hand_layout")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1012591023]
+
+[node name="EncounterLabel" type="Label" parent="CanvasLayer" unique_id=294315475]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 420.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 26
+text = "Encounter"
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer" unique_id=1136398645]
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 420.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 20
+text = "Turn"
+
+[node name="WarriorInfo" type="Label" parent="CanvasLayer" unique_id=1098060650]
+offset_left = 24.0
+offset_top = 94.0
+offset_right = 460.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 18
+text = "Warrior"
+autowrap_mode = 3
+
+[node name="MageInfo" type="Label" parent="CanvasLayer" unique_id=1741200220]
+offset_left = 24.0
+offset_top = 156.0
+offset_right = 460.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 18
+text = "Mage"
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="CanvasLayer" unique_id=956871224]
+offset_left = 470.0
+offset_top = 18.0
+offset_right = 1034.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 18
+text = "Drag cards to enemies, allies, or the center play zone."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BattleLog" type="Label" parent="CanvasLayer" unique_id=666129905]
+offset_left = 726.0
+offset_top = 94.0
+offset_right = 1238.0
+offset_bottom = 354.0
+theme_override_font_sizes/font_size = 18
+text = "Log"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer" unique_id=626863972]
+offset_left = 1096.0
+offset_top = 16.0
+offset_right = 1236.0
+offset_bottom = 58.0
+text = "End Turn"
+
+[node name="NextEncounterButton" type="Button" parent="CanvasLayer" unique_id=1009586473]
+offset_left = 934.0
+offset_top = 16.0
+offset_right = 1088.0
+offset_bottom = 58.0
+text = "Next Encounter"
+
+[connection signal="pressed" from="CanvasLayer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NextEncounterButton" to="." method="_on_next_encounter_button_pressed"]

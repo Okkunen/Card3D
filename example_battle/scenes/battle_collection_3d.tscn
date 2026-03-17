@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://d1uvcisduvvj" path="res://addons/card_3d/scenes/card_collection_3d.tscn" id="1_base"]
+[ext_resource type="Script" path="res://example_battle/scripts/battle_collection_3d.gd" id="2_script"]
+
+[node name="BattleCollection3D" instance=ExtResource("1_base")]
+script = ExtResource("2_script")

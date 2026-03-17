@@ -15,6 +15,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Cards"
-run/main_scene="res://example/table.tscn"
+run/main_scene="uid://fdx3muhixky4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
