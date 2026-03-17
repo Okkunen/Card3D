@@ -32,6 +32,8 @@
 
 ## GDScript conventions
 
+- Use `.github/godot.instructions.md` for GDScript-specific style guidance such as typing, naming, comments, and control-flow preferences.
+- Treat that file as complementary guidance for `*.gd` files, while this file remains the source of truth for repo architecture, public API constraints, scene contracts, and validation expectations.
 - Match the existing typed GDScript style and continue using `class_name` for reusable classes/resources.
 - Follow `.gdlintrc` rules:
   - use tabs, not spaces, for indentation;
@@ -64,3 +66,4 @@ find . -name "*.gd" -type f | xargs gdlint
 - `project.godot` currently advertises Godot feature `4.6`, but CI runs on Godot `4.4`. Avoid introducing APIs that require a newer runtime unless the project is updated consistently.
 - The working tree may contain unrelated user changes. Do not restore deleted examples or revert edits unless explicitly asked.
 - This repo tracks generated Godot metadata like `.uid` files, so changes that affect scripts/scenes often need companion metadata updates.
+- If `.github/godot.instructions.md` suggests a generic style preference that conflicts with the existing addon architecture or public API expectations here, prefer this repo-specific file.
