@@ -136,12 +136,12 @@ func _apply_overlay() -> void:
 			front_label.visible = true
 			front_label.text = str(health)
 			front_label.modulate = Color(1, 0, 0)
-			front_label.add_theme_font_size_override("font_size", 100)
+			front_label.add_theme_font_size_override("font_size", 120)
 		elif damage > 0:
 			front_label.visible = true
 			front_label.text = "Deal %d\ndamage" % damage
 			front_label.modulate = Color(0, 0, 0)
-			front_label.add_theme_font_size_override("font_size", 60)
+			front_label.add_theme_font_size_override("font_size", 72)
 	else:
 		front_label.visible = false
 	front_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE

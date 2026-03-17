@@ -3,6 +3,8 @@ extends Node3D
 
 const BATTLE_CARD_SCENE: PackedScene = preload("res://example_battle/scenes/battle_card_3d.tscn")
 const BATTLE_COLLECTION_SCENE: PackedScene = preload("res://example_battle/scenes/battle_collection_3d.tscn")
+const HAND_CARD_SCALE: Vector3 = Vector3(1.4, 1.4, 1.0)
+const UNIT_CARD_SCALE: Vector3 = Vector3(1.25, 1.25, 1.0)
 
 
 @onready var battle_manager = $BattleManager
@@ -114,6 +116,7 @@ func _refresh_hand_collection(collection, owner_id: StringName) -> void:
 		if card_data == null:
 			continue
 		var card_view = BATTLE_CARD_SCENE.instantiate()
+		card_view.scale = HAND_CARD_SCALE
 		card_view.apply_card_data(card_data, runtime_card)
 		collection.append_card(card_view)
 
@@ -147,7 +150,7 @@ func _spawn_unit_view(unit_state, anchor: Marker3D) -> void:
 	var card_view = BATTLE_CARD_SCENE.instantiate()
 	card_view.position = anchor.position
 	card_view.disable_collision()
-	card_view.scale = Vector3(1.1, 1.1, 1.0)
+	card_view.scale = UNIT_CARD_SCALE
 	card_view.apply_unit_state(unit_state, battle_manager.get_status_registry())
 	unit_views.add_child(card_view)
 

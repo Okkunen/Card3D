@@ -13,6 +13,6 @@ health = 0
 
 [node name="FrontTextureViewport" type="SubViewport" parent="." index="2"]
 disable_3d = true
-size = Vector2i(500, 700)
+size = Vector2i(700, 980)
 
 [node name="FrontTextureRoot" parent="FrontTextureViewport" index="0" instance=ExtResource("4_front_of_card")]
