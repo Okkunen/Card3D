@@ -12,18 +12,6 @@ This library is designed to be flexible and extendable for any card game. It off
   - configurable dropzone settings
 - **DragController**: Handles the drag-and-drop operations across multiple card collections.
 
-## Screenshots
-
-![Card Collection Overview](https://raw.githubusercontent.com/tdecker91/Card3D/main/screenshots/screenshot_1.png)
-
-![Solitaire Example](https://raw.githubusercontent.com/tdecker91/Card3D/main/screenshots/screenshot_4.png)
-
-![Different Style Example](https://raw.githubusercontent.com/tdecker91/Card3D/main/screenshots/screenshot_6.png)
-
-## Installation
-
-import the asset from the Godot asset library into an existing project
-
 ## Usage
 
 1. Create a new scene that inherits from `Card3D` and extend the `Card3D` script. This allows you to create your own card meshes and textures. (You can also use the example textures included.)
@@ -31,13 +19,3 @@ import the asset from the Godot asset library into an existing project
 3. Add one or more instances of `CardCollection3D` as children of the `DragController`.
 4. Configure the drop settings for the card collections.
 5. Add a script that instantiates `Card3D` nodes and adds them to the collections.
-
-
-## Contributing
-
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for guidelines and instructions.
-
-## Acknowledgements
-
-
-- Assets used from [Kenney's Boardgame Pack](https://www.kenney.nl/assets/boardgame-pack)
