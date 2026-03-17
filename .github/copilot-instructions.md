@@ -32,7 +32,7 @@
 
 ## GDScript conventions
 
-- Use `.github/godot.instructions.md` for GDScript-specific style guidance such as typing, naming, comments, and control-flow preferences.
+- Use `.github/instructions/godot.instructions.md` for GDScript-specific style guidance such as typing, naming, comments, and control-flow preferences.
 - Treat that file as complementary guidance for `*.gd` files, while this file remains the source of truth for repo architecture, public API constraints, scene contracts, and validation expectations.
 - Match the existing typed GDScript style and continue using `class_name` for reusable classes/resources.
 - Follow `.gdlintrc` rules:
@@ -41,6 +41,13 @@
   - use `PascalCase` for class names;
   - keep the existing member ordering style used across addon scripts.
 - Keep `.uid` files in sync when scripts are moved or renamed.
+
+## MCP workflow
+
+- Prefer the `godot` MCP server for scene and editor operations when possible instead of hand-editing scene structure.
+- Use Godot editor MCP tools such as `mcp_godot_launch_editor`, `mcp_godot_add_node`, `mcp_godot_load_sprite`, `mcp_godot_save_scene`, and `mcp_godot_update_project_uids` when they fit the task.
+- When a change affects scenes, nodes, or runtime behavior, prefer validating startup with `mcp_godot_run_project` rather than assuming the project still launches.
+- Use the editor-oriented MCP workflow especially for adding nodes, adjusting scene structure, and letting Godot manage generated metadata.
 
 ## Validation checklist
 
@@ -53,6 +60,7 @@ find . -name "*.gd" -type f | xargs gdlint
 - Run the sample scenes in Godot when behavior changes:
   - `res://example/table.tscn`
   - `res://example_battle/scenes/battle.tscn`
+- After behavior, workflow, or scene-structure changes, re-check `.github/copilot-instructions.md` and `.github/instructions/godot.instructions.md` and update them if the change makes either instruction file stale.
 - If drag or layout logic changes, manually verify:
   - hover highlighting;
   - drag start threshold behavior;
@@ -66,4 +74,4 @@ find . -name "*.gd" -type f | xargs gdlint
 - `project.godot` currently advertises Godot feature `4.6`, but CI runs on Godot `4.4`. Avoid introducing APIs that require a newer runtime unless the project is updated consistently.
 - The working tree may contain unrelated user changes. Do not restore deleted examples or revert edits unless explicitly asked.
 - This repo tracks generated Godot metadata like `.uid` files, so changes that affect scripts/scenes often need companion metadata updates.
-- If `.github/godot.instructions.md` suggests a generic style preference that conflicts with the existing addon architecture or public API expectations here, prefer this repo-specific file.
+- If `.github/instructions/godot.instructions.md` suggests a generic style preference that conflicts with the existing addon architecture or public API expectations here, prefer this repo-specific file.

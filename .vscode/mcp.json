@@ -1,0 +1,26 @@
+{
+    "servers": {
+        "godot": {
+            // Godot editor/server integration for scene edits, node operations,
+            // project startup validation, and metadata-safe save flows.
+            "command": "node",
+            "args": [
+                "../../godot-mcp/build/index.js"
+            ],
+            "env": {
+                "DEBUG": "true" // Enable detailed logging
+            }
+        },
+        "godot-docs": {
+            // Godot documentation lookup for class, node, resource, property,
+            // and signal references before making engine-specific changes.
+            "command": "node",
+            "args": [
+                "../../godot-docs-mcp/build/index.js"
+            ],
+            "env": {
+                "DEBUG": "true"
+            }
+        }
+    }
+}

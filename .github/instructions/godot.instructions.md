@@ -5,6 +5,12 @@ applyTo: '**/*.gd'
 
 Use these instructions for GDScript files in this repository. Keep them aligned with the repo-specific guidance in `.github/copilot-instructions.md`, especially where the addon's existing architecture and public API shape matter more than generic style preferences.
 
+## Godot Docs Workflow
+
+- Before working with an unfamiliar node, resource, property, signal, or other Godot engine feature, use `mcp_godot-docs_godot_docs_get_page` to read the relevant docs instead of guessing.
+- Use `mcp_godot-docs_godot_docs_search` first when you need to find the correct class or feature page.
+- Prefer docs-backed changes over memory-based assumptions, especially when behavior may differ across Godot versions.
+
 ## Code Style
 
 ### Indentation
@@ -64,6 +70,11 @@ Use these instructions for GDScript files in this repository. Keep them aligned 
 - Match the style already used in the file you are editing.
 - Favor consistency with the current addon codebase over generic best-practice rewrites.
 - Preserve scene and node-path contracts used by the core scripts unless the change intentionally updates all dependents.
+
+### Scene Editing
+- When a task involves adding nodes or changing scene structure, prefer the `godot` MCP editor tools over hand-editing `.tscn` files when those tools can perform the change safely.
+- Let Godot and its MCP tooling manage generated scene metadata where possible.
+- After behavior, node-structure, or engine-feature changes, check whether `.github/copilot-instructions.md` or this file has gone stale and update the guidance when needed.
 
 ### UID Files
 - Do not manually create or hand-edit Godot `.uid` files such as `*.tscn.uid` or `*.gd.uid`.
